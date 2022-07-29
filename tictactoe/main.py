@@ -48,8 +48,11 @@ def human_vs_human():
                 break
        
         print_board()
-        if machine.is_terminal_state(board):
-            print("player 1 ganhou!")
+        if  machine.was_won(board):
+            print("Player 1 ganhou!")
+            break
+        elif machine.is_board_complete(board):
+            print("Empate!")
             break
       
         while(True):
@@ -59,8 +62,11 @@ def human_vs_human():
                 played_moves.append(player2)
                 break
         print_board()
-        if machine.is_terminal_state(board):
-            print("player 2 ganhou!")
+        if  machine.was_won(board):
+            print("Player 2 ganhou!")
+            break
+        elif machine.is_board_complete(board):
+            print("Empate!")
             break
     
         
@@ -80,8 +86,11 @@ def human_vs_machine():
                 break
        
         print_board()
-        if machine.is_terminal_state(board):
+        if  machine.was_won(board):
             print("Você ganhou!")
+            break
+        elif machine.is_board_complete(board):
+            print("Empate! A humanidade foi salva.")
             break
         while(True):
             player2 = machine.best_move(board)
@@ -91,8 +100,11 @@ def human_vs_machine():
                 played_moves.append(player2)
                 break
         print_board()
-        if machine.is_terminal_state(board):
+        if  machine.was_won(board):
             print("A máquina ganhou! Bip bop")
+            break
+        elif machine.is_board_complete(board):
+            print("Empate! A humanidade foi salva.")
             break
         
         

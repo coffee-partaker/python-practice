@@ -23,10 +23,8 @@ class Board:
     6 7 8
     '''
 
-    def is_terminal_state(self, board: List[T]):
-        
-        if self.is_board_complete(board):
-            return True 
+    def was_won(self, board: List[T]):
+         
     
         for scenario in self.scenarios:
             if board[scenario[0]] == board[scenario[1]] and board[scenario[1]] == board[scenario[2]]:
