@@ -1,4 +1,4 @@
-from temp import Board, is_board_complete, board
+from temp import Board
 from predict_moves import predict_best_move
 # consume api
 # alternate turns
