@@ -19,7 +19,10 @@ values = [0, 1, 2]
 running = True
 
 welcome_message()
-input()
+while True:
+    choice = int(input())
+    if choice == 0 or choice == 1:
+        break
 
 
 def print_board():
@@ -94,7 +97,9 @@ def human_vs_machine():
 #1 - 0 - 0
 #2 - 1 - 0
 #0 - 0 - 2
-#human_vs_human()
-human_vs_machine()
+if choice == 0:
+    human_vs_human()
+else:
+    human_vs_machine()
 
 
