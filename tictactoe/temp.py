@@ -1,10 +1,7 @@
 # win scenarios
 scenarios = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
 
-def is_terminal_state(board, values):
-    #print(board)
-    if is_board_complete(board, values):
-        return True 
+def was_won(board, values):
 
     for scenario in scenarios:
         #print(scenario, "%d == %d == %d" % (board[scenario[0]], board[scenario[1]], board[scenario[2]]))

@@ -1,4 +1,4 @@
-from temp import is_board_complete, is_terminal_state
+from temp import is_board_complete, was_won
 from predict_moves import predict_best_move
 # consume api
 # alternate turns
@@ -46,8 +46,11 @@ def human_vs_human():
                 break
        
         print_board()
-        if is_terminal_state(board, values):
-            print("player 1 ganhou!")
+        if was_won(board, values):
+            print("Player 1 ganhou!")
+            break
+        elif is_board_complete(board, values):
+            print("Empate!")
             break
       
         while(True):
@@ -57,8 +60,11 @@ def human_vs_human():
                 played_moves.append(player2)
                 break
         print_board()
-        if is_terminal_state(board, values):
-            print("player 2 ganhou!")
+        if was_won(board, values):
+            print("Player 2 ganhou!")
+            break
+        elif is_board_complete(board, values):
+            print("Empate!")
             break
     
         
@@ -78,8 +84,11 @@ def human_vs_machine():
                 break
        
         print_board()
-        if is_terminal_state(board, values):
+        if was_won(board, values):
             print("Você ganhou!")
+            break
+        elif is_board_complete(board, values):
+            print("Empate! A humanidade foi salva.")
             break
         while(True):
             player2 = predict_best_move(board, values)
@@ -89,8 +98,12 @@ def human_vs_machine():
                 played_moves.append(player2)
                 break
         print_board()
-        if is_terminal_state(board, values):
+    
+        if was_won(board, values):
             print("A máquina ganhou! Bip bop")
+            break
+        elif is_board_complete(board, values):
+            print("Empate! A humanidade foi salva.")
             break
         
         
