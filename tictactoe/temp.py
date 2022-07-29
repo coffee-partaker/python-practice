@@ -24,12 +24,12 @@ class Board:
     '''
 
     def is_terminal_state(self, board: List[T]):
-
+        print(board)
         if self.is_board_complete(board):
             return True 
     
         for scenario in self.scenarios:
-            if board[scenario[0]] == board[scenario[1]] and board[scenario[1]] == list[scenario[2]]:
+            if board[scenario[0]] == board[scenario[1]] and board[scenario[1]] == board[scenario[2]]:
                 if board[scenario[0]] != self.values[0]:
                     return True
         
