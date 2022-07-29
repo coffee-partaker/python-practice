@@ -24,7 +24,7 @@ class Board:
     '''
 
     def is_terminal_state(self, board: List[T]):
-        print(board)
+        
         if self.is_board_complete(board):
             return True 
     
@@ -52,7 +52,6 @@ class Board:
 
     def minimax(self, board: List[T], depth: int, isMaximizingPlayer: bool):
         score = self.evaluate(board)
-        print(board)
         if score == 10 or score == -10:
             return score
     
