@@ -1,4 +1,5 @@
 
+from random import randint
 from typing import List, TypeVar
 class Board:
     
@@ -23,15 +24,19 @@ class Board:
     6 7 8
     '''
 
-    def was_won(self, board: List[T]):
-         
-    
+    def was_won(self, board: List[T]):    
         for scenario in self.scenarios:
             if board[scenario[0]] == board[scenario[1]] and board[scenario[1]] == board[scenario[2]]:
                 if board[scenario[0]] != self.values[0]:
                     return True
         
         return False
+
+    def is_board_empty(self, board: List[int]):
+        for position in board:
+            if position != self.values[0]:
+                return False
+        return True
 
     def is_board_complete(self, board: List[T]):
         for position in board:
@@ -58,7 +63,7 @@ class Board:
         
         if isMaximizingPlayer:
             best = -1000 
-            for i in range(0,8) :
+            for i in range(0,9) :
                 if board[i] == self.values[0]:
                     board[i] = self.values[1]
                     best = max(best, self.minimax(board, depth + 1, not isMaximizingPlayer))
@@ -68,7 +73,7 @@ class Board:
 
         else :
             best = 1000 
-            for i in range(0,8) :
+            for i in range(0,9) :
                 if board[i] == self.values[0]:
                     board[i] = self.values[2]
                     best = min(best, self.minimax(board, depth + 1, not isMaximizingPlayer))
@@ -79,7 +84,18 @@ class Board:
     def best_move(self, board: List[T]):
         bestVal = -1000
         bestMove = -1
-        for i in range(0,8) :
+        if self.is_board_empty(board):
+            dict = {
+                0: 0,
+                1: 2,
+                2: 4,
+                3: 6,
+                4: 8
+
+            }
+            return dict[randint(0, 4)]
+        
+        for i in range(0, 9) :
             if board[i] == self.values[0]:
                 
                 board[i] = self.values[1]
