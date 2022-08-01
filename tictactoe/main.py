@@ -8,9 +8,10 @@ def welcome_message():
     print("""
 Welcome to TicTactoe
 
-Do you want play with?
-  [0] - Human
-  [1] - Machine  
+Who do you want play against?
+  [0] - The Human
+  [1] - The Machine
+  [2] - Watch Mode
 """)
 
 board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -23,7 +24,7 @@ machine = Board(values)
 welcome_message()
 while True:
     choice = int(input())
-    if choice == 0 or choice == 1:
+    if choice >= 0 and  choice < 3:
         break
 
 
@@ -36,7 +37,7 @@ def print_board():
 
 def human_vs_human():
     played_moves = []
-    print("Pick a position: ")
+    print("Contemplation of human inferiority: ")
     while(True):
         player1 = -1
         player2 = -1
@@ -73,7 +74,7 @@ def human_vs_human():
 
 def human_vs_machine():
     played_moves = []
-    print("Pick a position: ")
+    print("Prepare thyselves for annihilation: ")
     while(True):
         player1 = -1
         player2 = -1
@@ -107,13 +108,46 @@ def human_vs_machine():
             print("Draw! The humankind was spared.")
             break
         
+
+def machine_vs_machine():
+    played_moves = []
+    print("Behold the evolution: ")
+    while(True):
+        player1 = -1
+        player2 = -1
         
-#1 - 0 - 0
-#2 - 1 - 0
-#0 - 0 - 2
+        while(True):
+            player1 = machine.best_move(board)
+            if valid_moves.count(player1) != 0 and played_moves.count(player1) == 0:
+                board[player1] = values[1]
+                played_moves.append(player1)
+                break
+       
+        print_board()
+        if  machine.was_won(board):
+            print("The machine won! Exactly as predicted.")
+            break
+        elif machine.is_board_complete(board):
+            print("Draw! There are no room for improvement.")
+            break
+        while(True):
+            player2 = machine.best_move(board)
+            print(player2)
+            if valid_moves.count(player2) != 0 and played_moves.count(player2) == 0:
+                board[player2] = values[2]
+                played_moves.append(player2)
+                break
+        print_board()
+        if  machine.was_won(board):
+            print("The machine won! The axiom has been proven truthful.")
+            break
+        elif machine.is_board_complete(board):
+            print("Draw! There are no room for improvement.")
+            break
+        
 if choice == 0:
     human_vs_human()
-else:
+elif choice == 1:
     human_vs_machine()
-
-
+else:
+    machine_vs_machine()
