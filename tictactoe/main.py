@@ -9,7 +9,7 @@ def welcome_message():
 Welcome to TicTactoe
 
 Do you want play with?
-  [0] - Human
+  [0] - Human  
   [1] - Machine  
 """)
 
@@ -34,7 +34,7 @@ def print_board():
 
 def human_vs_human():
     played_moves = []
-    print("Escolha uma casa: ")
+    print("Pick a position: ")
     while(True):
         player1 = -1
         player2 = -1
@@ -47,10 +47,10 @@ def human_vs_human():
        
         print_board()
         if was_won(board, values):
-            print("Player 1 ganhou!")
+            print("Player 1 won!")
             break
         elif is_board_complete(board, values):
-            print("Empate!")
+            print("Draw!")
             break
       
         while(True):
@@ -61,17 +61,17 @@ def human_vs_human():
                 break
         print_board()
         if was_won(board, values):
-            print("Player 2 ganhou!")
+            print("Player 2 won!")
             break
         elif is_board_complete(board, values):
-            print("Empate!")
+            print("Draw!")
             break
     
         
 
 def human_vs_machine():
     played_moves = []
-    print("Escolha uma casa: ")
+    print("Pick a position: ")
     while(True):
         player1 = -1
         player2 = -1
@@ -85,10 +85,10 @@ def human_vs_machine():
        
         print_board()
         if was_won(board, values):
-            print("Você ganhou!")
+            print("You won!")
             break
         elif is_board_complete(board, values):
-            print("Empate! A humanidade foi salva.")
+            print("Draw! The mankind was spared.")
             break
         while(True):
             player2 = predict_best_move(board, values)
@@ -100,10 +100,10 @@ def human_vs_machine():
         print_board()
     
         if was_won(board, values):
-            print("A máquina ganhou! Bip bop")
+            print("The machine won! Bip bop.")
             break
         elif is_board_complete(board, values):
-            print("Empate! A humanidade foi salva.")
+            print("Draw! The mankind was spared.")
             break
         
         
