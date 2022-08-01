@@ -36,7 +36,7 @@ def print_board():
 
 def human_vs_human():
     played_moves = []
-    print("Escolha uma casa: ")
+    print("Pick a position: ")
     while(True):
         player1 = -1
         player2 = -1
@@ -49,10 +49,10 @@ def human_vs_human():
        
         print_board()
         if  machine.was_won(board):
-            print("Player 1 ganhou!")
+            print("Player 1 won!")
             break
         elif machine.is_board_complete(board):
-            print("Empate!")
+            print("Draw!")
             break
       
         while(True):
@@ -63,17 +63,17 @@ def human_vs_human():
                 break
         print_board()
         if  machine.was_won(board):
-            print("Player 2 ganhou!")
+            print("Player 2 won!")
             break
         elif machine.is_board_complete(board):
-            print("Empate!")
+            print("Draw!")
             break
     
         
 
 def human_vs_machine():
     played_moves = []
-    print("Escolha uma casa: ")
+    print("Pick a position: ")
     while(True):
         player1 = -1
         player2 = -1
@@ -87,10 +87,10 @@ def human_vs_machine():
        
         print_board()
         if  machine.was_won(board):
-            print("Você ganhou!")
+            print("You won! The machines were outsmarted")
             break
         elif machine.is_board_complete(board):
-            print("Empate! A humanidade foi salva.")
+            print("Draw! The humankind was spared.")
             break
         while(True):
             player2 = machine.best_move(board)
@@ -101,10 +101,10 @@ def human_vs_machine():
                 break
         print_board()
         if  machine.was_won(board):
-            print("A máquina ganhou! Bip bop")
+            print("The machine won! Bip bop.")
             break
         elif machine.is_board_complete(board):
-            print("Empate! A humanidade foi salva.")
+            print("Draw! The humankind was spared.")
             break
         
         
