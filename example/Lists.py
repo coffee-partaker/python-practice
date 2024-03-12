@@ -1,40 +1,28 @@
-'''
+def get_decimal_input():
+    try:
+        decimal_string = input("Type in a decimal: ")
+        decimal_number = int(decimal_string.replace('-', ''))
+        return decimal_number
+    except ValueError:
+        print("Error: invalid input. Please enter a valid decimal number.")
+        return None
 
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
+def decimal_to_binary(decimal_number):
+    binary_list = []
+    while decimal_number != 0:
+        binary_list.append(decimal_number % 2)
+        decimal_number //= 2
+    binary_list.reverse()
+    return binary_list
 
-'''
-print("Bem vindo ao Conversor Decimal-Binário versão de fábrica!!!")
-string = input("Digite um numero Decimal: ")
+def main():
+    decimal_number = get_decimal_input()
+    if decimal_number is not None:
+        sign_bit = 1 if decimal_number < 0 else 0
+        binary_representation = decimal_to_binary(abs(decimal_number))
+        print("The first bit represents the sign (0 for positive, 1 for negative):")
+        print([sign_bit] + binary_representation)
 
-if string[0] == '-':
-    valor = 1
-    
-else:
-    valor = 0
-    
-try:
-    string = string.replace('-', '')
-    num = int(string)
-
-except: 
-    print("Erro: Não foi fornecido um número válido")
-    
-else:
-    if num == 0:
-        lista.append(num)
-    
-    else:
-        quo = int (num)
-        lista = []
-        while(quo != 1):
-            quo = quo // 2
-            lista.append(num % 2)
-    
-    lista.append(quo)
-    lista.reverse()
-    print("O primeiro bit representa o sinal")
-    lista.insert(0, valor)
-    print(lista)
+if __name__ == "__main__":
+    print("Welcome to Decimal-Binary Translator!")
+    main()

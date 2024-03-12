@@ -1,28 +1,31 @@
 import random
 
-def bubbleSort_1(a):
-    for x in range (0, len(a)):
-        for y in range (0, len(a)):
-            if a[x] < a[y]:
-                number = a[x]
-                a[x] = a[y]
-                a[y] = number
-                
-def bubbleSort_2(a):
-    for x in range (0, len(a)):
-        for y in range (0, len(a)):
-            if a[x] > a[y]:
-                number = a[x]
-                a[x] = a[y]
-                a[y] = number                
-            
+def bubble_sort(a, ascending=True):
+    """
+    Sorts the list 'a' using bubble sort.
+    :param a: List of integers
+    :param ascending: True for ascending order, False for descending order
+    """
+    n = len(a)
+    for i in range(n):
+        swapped = False
+        for j in range(n - i - 1):
+            if (a[j] > a[j + 1]) if ascending else (a[j] < a[j + 1]):
+                a[j], a[j + 1] = a[j + 1], a[j]
+                swapped = True
+        if not swapped:
+            break
 
-a = random.sample(range(-100, 100), 10)
-print("Arranjo não ordenado: ", a)
+def main():
+    random_numbers = random.sample(range(-100, 100), 10)
+    print("Original set:", random_numbers)
 
-bubbleSort_1(a)
-print("Arranjo ordenado: ", a)
+    bubble_sort(random_numbers)
+    print("Sorted set (ascending):", random_numbers)
 
-bubbleSort_2(a)
-print("Arranjo reordenado: ", a)
+    bubble_sort(random_numbers, ascending=False)
+    print("Sorted set (descending):", random_numbers)
 
+if __name__ == "__main__":
+    print("Welcome to Bubble Sort!")
+    main()
